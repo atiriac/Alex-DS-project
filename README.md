@@ -2,6 +2,11 @@
  
 Current files (kind of in the order you would run the analysis from raw data -> results):
 
+
+Steps 1-4 are done on individual files
+Step 5 is done once I've analyzed every FOV
+
+
 1) RegisterAndCalcDFOF_withGFP_v2.ijm   (FIJI macro)
 This is the first code I run in my analysis pipeline. It takes a two-channel tif stack and uses one of the channels (usually the cell-GFP channel though this works on calcium channel) for motion correction. It then uses a predetermined set of trial times (these don't change in my entire dataset) to obtain Fbackground and calculates dF/F using this. 
 
@@ -15,9 +20,11 @@ This is the third code I run in my analysis pipeline. Once I draw ROIs in FIJI o
 This is a standalone function that can be used to calculate DS and VS.
 
 4) mainDS.m (Matlab code)
-Using the cell IDs obtained using code 3), this code does many things. For example it will plot the local DS map for this FOV for ON-OFF and ON DSGCs and it will also plot the sorted mean responses to trial directions. More importantly, this code is used to export a matrix called roiInt where every row is a cell and the columns contain the dF/F trace of that cell. This code also exports the text file with direction information. This information is exported to a main folder that will be used to generate a mega table where every row in the table is one cell and the columns contain metadata of that cell. The table ultimately contains every single cell from the entire dataset.
+Using the cell IDs obtained using code 3), this code does many things. For example it will plot the local DS map for this FOV for ON-OFF and ON DSGCs and it will also plot the sorted mean responses to trial directions. More importantly, this code is used to export a matrix called roiInt where every row is a cell and the columns contain the dF/F trace of that cell. This code also exports the text file with direction information. This information is exported to a main folder that will be used to generate a "neuron" table where every row in the table is one cell and the columns contain metadata of that cell. The table ultimately contains every single cell from the entire dataset.
 
-
+5) buildNeuronTable3.m (Matlab code)
+This code will take all of the exported data from 4) and compile it into what I call a neuronTable. In this neuronTable, every row is a cell, and every column contains metadata about this cell. For example, which file did it come from, which date, sex of animal, age, experimental condition, mean responses, DSI, preferred direction, etc...
+For this code to run, it needs an accompanying excel spreadsheet that contains a lot of the metadata. This is explained in my analysisPipelineManual document found in this gitHub folder.
 
 
 
