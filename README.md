@@ -11,10 +11,10 @@ This is the second code I run in my analysis pipeline. This code lets you find D
 3) lookAtCells.m and lookAtCells_redraw.m  (Matlab code)
 This is the third code I run in my analysis pipeline. Once I draw ROIs in FIJI over DS regions using the output of code 2), I run this code which has a GUI that allows the user to cycle through all ROIs. It outputs things like the entire dF/F trace, the mean response to each directions, a tuning curve, and DSI and VS values.
 
-3b) CalculateDS.m  (matlab function)
+3b) CalculateDS.m  (Matlab function)
 This is a standalone function that can be used to calculate DS and VS.
 
-
+4) mainDS.m (Matlab code)
 
 
 
